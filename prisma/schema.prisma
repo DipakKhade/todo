@@ -1,5 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -10,10 +8,19 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Todo {
-  id String @id @default(auto()) @map("_id") @db.ObjectId
-  title String
-  isCompleted Boolean @default(false)
+// model Todo {
+//   mnongoID String @id @default(auto()) @map("_id") @db.ObjectId
+//   userId Int
+//   id Int
+//   title String
+//   completed Boolean
+// }
+
+
+model todos {
+  mongod      String @id @default(auto()) @map("_id") @db.ObjectId // Assuming _id is a string and auto-generated
+  title     String
+  completed Boolean @default(false)
   createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  updatedAt DateTime @default(now())
 }
